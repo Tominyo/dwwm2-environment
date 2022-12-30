@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Restaurant</title>
+    <script src="https://polyfill.io/v3/polyfill.min.js?features=default"></script>
+    <link rel='stylesheet' type='text/css' media='screen' href='css/styles.css'>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Lato&display=swap" rel="stylesheet">
+    <script src="https://unpkg.com/ionicons@5.0.0/dist/ionicons.js"></script>
+    <script type="module" src="./scripts/index.js"></script>    
+</head>
+<body>
+    <header>
+        <nav class="menu">
+            <a href="/"><img src="/img/logo.png" width="100" alt="Logo du site"/></a>
+            <ul>
+                <li><a href="#about">A Propos</a></li>
+                <li><a href="#selectionOfMonth">Notre Sélection</a></li>
+                <li><a href="#contact">Nous Joindre</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main>
+        <section id="presentation-section">
+
+            <img src="<%= data.attributes.imageUrl %>" class="banner-image"/>
+
+            <blockquote> “ <%= data.attributes.description %> “
+            </blockquote>
+
+        </section>
+
+        <section id="rating-section">
+            <span class="fa fa-star checked"></span>
+            <span class="fa fa-star checked"></span>
+            <span class="fa fa-star checked"></span>
+            <span class="fa fa-star"></span>
+            <span class="fa fa-star"></span>
+        </section>
+
+        <div class="separator"></div>
+
+        <section id="menu-section">
+            <h2>Les Plats</h2>
+
+            <div class="numberlist">
+             <ol>
+              <li><a>Pâte aux crevette (13€90)</a></li>
+              <li><a>Marlin Frit + 2 accompagnement (10€90)</a></li>
+              <li><a>Tarte au poulet (6€50)</a></li>
+              <li><a>Pâte aux crevette (13€90)</a></li>
+              <li><a>...</a></li>
+             </ol>
+            </div>
+            
+        </section>
+
+        <div class="separator"></div>
+
+        <section id="horaire-section">
+            <h2>Les Horaires</h2>
+            <div class="presentation">
+
+
+                <ul>
+                    <li>Lundi : 10h - 17h </li>
+                    <li>Mardi : 10h - 17h </li>
+                    <li>Mercredi : 10h - 12h </li>
+                    <li>Jeudi : 10h - 17h </li>
+                    <li>Vendredi : 10h - 17h </li>
+                    <li>Samedi : 10h - 21h </li>
+                    <li>Dimanche : Fermé </li>
+                </ul>
+
+            </div>
+          
+
+        </section>
+
+        <div class="separator"></div>
+
+        <section id="gallery-section">
+
+            <h2>Galerie Photos</h2>
+
+            <section class="carousel">
+                <div class="carousel_slider">
+                  <div class="content_inner_slider">
+                    <img src="http://localhost:1337/uploads/carousel1_23a89c58ae.jpg?updated_at=2022-12-30T14:53:58.372Z" alt="" class="img">
+                    <img src="http://localhost:1337/uploads/carousel2_f9d578bee9.jpg?updated_at=2022-12-30T14:53:56.664Z" alt="" class="img">
+                    <img src="http://localhost:1337/uploads/carousel3_0a2e395e95.jpg?updated_at=2022-12-30T14:53:59.716Z" alt="" class="img">
+                    <img src="http://localhost:1337/uploads/carousel4_e157e64718.jpg?updated_at=2022-12-30T14:53:58.309Z" alt="" class="img">
+                    <img src="http://localhost:1337/uploads/carousel5_87c2a30066.jpg?updated_at=2022-12-30T14:53:56.102Z" alt="" class="img">
+                  </div>
+                  <button class="prev_button">
+                    <ion-icon name="chevron-back-outline"></ion-icon>
+                  </button>
+                  <button class="next_button">
+                    <ion-icon name="chevron-forward-outline"></ion-icon>
+                  </button>
+                </div>
+                <ul class="dots">
+                  <li class="dot" value="0"></li>
+                  <li class="dot" value="1"></li>
+                  <li class="dot" value="2"></li>
+                  <li class="dot" value="3"></li>
+                  <li class="dot" value="4"></li>
+                </ul>
+            <!--
+            <div class="form">
+                <input type="checkbox" class="auto_slide" id="slide">
+                <label for="slide">Auto Slide</label>
+            </div>
+            -->
+              </section>
+
+        </section>
+
+        <!--
+            <section id="contact-section">
+                    <div id="map"></div>
+
+         
+                        ### The `defer` attribute causes the callback to execute after the full HTML
+                        document has been parsed. For non-blocking uses, avoiding race conditions,
+                        and consistent behavior across browsers, consider loading using Promises
+                        with https://www.npmjs.com/package/@googlemaps/js-api-loader.
+                        ###
+           
+                </section>
+        -->
+       
+
+    </main>
+
+    <footer>
+        <p>LesMeilleursResto972 - Tout droits réservés ©</p>
+    </footer>
+
+    <script type="module">
+        import { initCarousel } from "/scripts/carousel.js";
+
+        window.onload = function () {
+        var list = document.getElementsByClassName("fa-star");
+
+        var rating = '<%= data.attributes.rate %>'
+    /*
+        list.forEach(element => {
+            element.classList.add("checked")
+        });
+    */
+        console.log(rating)
+        var stars = document.querySelectorAll('.fa-star')
+        for (var i = 0; i < Math.floor(rating); i++) {
+            stars[i].classList.add('checked');
+        }
+
+        initCarousel();
+
+    }
+  </script>
+
+</body>
+</html>

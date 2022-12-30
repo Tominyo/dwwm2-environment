@@ -1,0 +1,18 @@
+{
+  "collectionName": "components_address_addresses",
+  "info": {
+    "displayName": "address"
+  },
+  "options": {},
+  "attributes": {
+    "name": {
+      "type": "string"
+    },
+    "rue": {
+      "type": "string"
+    },
+    "numero": {
+      "type": "integer"
+    }
+  }
+}
